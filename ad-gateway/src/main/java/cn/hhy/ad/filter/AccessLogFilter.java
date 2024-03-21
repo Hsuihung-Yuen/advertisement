@@ -19,6 +19,7 @@ public class AccessLogFilter extends ZuulFilter {
     }
 
     @Override
+    //在发生响应的过滤器之后执行
     public int filterOrder() {
         return FilterConstants.SEND_RESPONSE_FILTER_ORDER;
     }

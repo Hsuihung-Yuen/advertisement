@@ -16,6 +16,7 @@ public class PreRequestFilter extends ZuulFilter {
     }
 
     @Override
+    //0意味着会在同一类型的其他过滤器之前执行
     public int filterOrder() {
         return 0;
     }

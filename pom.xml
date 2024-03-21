@@ -12,6 +12,7 @@
     <modules>
         <module>ad-erueka</module>
         <module>ad-gateway</module>
+        <module>ad-service</module>
     </modules>
 
     <name>advertisement</name>
