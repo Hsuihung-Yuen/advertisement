@@ -1,0 +1,57 @@
+# maven ignore
+HELP.md
+*.jar
+!.mvn/wrapper/*
+*.war
+*.zip
+*.tar
+*.tar.gz
+
+# eclipse ignore
+.settings/
+.project
+.classpath
+
+# vscode ignore
+.vscode/
+
+# temp ignore
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+/header_upload/
+/log/
+
+#reports ignore
+/reports
+
+#configuration ingore
+application-local.yml
+application-local.properties
+application-dev.yml
+application-dev.properties
+
+# system ignore
+.DS_Store
+Thumbs.db
+*.orig
+
+# idea ignore
+.idea/
+*.ipr
+*.iws
+.mymetadata
+.checkstyle
+.class
+.war
+.zip
+.rar
+*.iml
+.settings/*
+/indexes/*
+/target/*
+/src/main/webapp/WEB-INF/classes/*
+/src/main/webapp/userfiles/*
+
