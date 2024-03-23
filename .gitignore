@@ -28,10 +28,10 @@ HELP.md
 /reports
 
 #configuration ingore
-application-local.yml
-application-local.properties
-application-dev.yml
-application-dev.properties
+**/application-local.yml
+**/application-local.properties
+**/application-dev.yml
+**/application-dev.properties
 
 # system ignore
 .DS_Store

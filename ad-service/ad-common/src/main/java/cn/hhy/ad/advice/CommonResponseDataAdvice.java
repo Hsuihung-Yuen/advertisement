@@ -29,11 +29,15 @@ public class CommonResponseDataAdvice implements ResponseBodyAdvice<Object> {
             return false;
         }
 
-        return true;    }
+        return true;
+    }
 
     @Nullable
     @Override
-    public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
+    public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType,
+                                  Class<? extends HttpMessageConverter<?>> aClass,
+                                  ServerHttpRequest serverHttpRequest,
+                                  ServerHttpResponse serverHttpResponse) {
         CommonResponse<Object> response = new CommonResponse<>(0, "");
         if (null == o) {
             return response;
@@ -43,5 +47,6 @@ public class CommonResponseDataAdvice implements ResponseBodyAdvice<Object> {
             response.setData(o);
         }
 
-        return response;    }
+        return response;
+    }
 }
