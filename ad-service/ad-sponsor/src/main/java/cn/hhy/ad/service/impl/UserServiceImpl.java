@@ -27,15 +27,13 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     @Transactional
-    public CreateUserResponse createUser(CreateUserRequest request)
-            throws AdException {
+    public CreateUserResponse createUser(CreateUserRequest request) throws AdException {
 
         if (!request.validate()) {
             throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
         }
 
-        AdUser oldUser = userRepository.
-                findByUsername(request.getUsername());
+        AdUser oldUser = userRepository.findByUsername(request.getUsername());
         if (oldUser != null) {
             throw new AdException(Constants.ErrorMsg.SAME_NAME_ERROR);
         }

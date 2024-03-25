@@ -56,3 +56,5 @@ Thumbs.db
 /src/main/webapp/userfiles/*
 
 **/target/*
+
+/data/**

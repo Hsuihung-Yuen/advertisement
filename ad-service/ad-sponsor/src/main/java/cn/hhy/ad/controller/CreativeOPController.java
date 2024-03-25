@@ -23,11 +23,8 @@ public class CreativeOPController {
     }
 
     @PostMapping("/create/creative")
-    public CreativeResponse createCreative(
-            @RequestBody CreativeRequest request
-            ) {
-        log.info("ad-sponsor: createCreative -> {}",
-                JSON.toJSONString(request));
+    public CreativeResponse createCreative(@RequestBody CreativeRequest request) {
+        log.info("ad-sponsor: createCreative -> {}", JSON.toJSONString(request));
         return creativeService.createCreative(request);
     }
 }

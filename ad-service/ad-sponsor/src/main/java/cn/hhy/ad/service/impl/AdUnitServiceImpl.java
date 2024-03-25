@@ -43,7 +43,9 @@ public class AdUnitServiceImpl implements IAdUnitService {
                              AdUnitRepository unitRepository,
                              AdUnitKeywordRepository unitKeywordRepository,
                              AdUnitItRepository unitItRepository,
-                             AdUnitDistrictRepository unitDistrictRepository, CreativeRepository creativeRepository, CreativeUnitRepository creativeUnitRepository) {
+                             AdUnitDistrictRepository unitDistrictRepository,
+                             CreativeRepository creativeRepository,
+                             CreativeUnitRepository creativeUnitRepository) {
         this.planRepository = planRepository;
         this.unitRepository = unitRepository;
         this.unitKeywordRepository = unitKeywordRepository;
@@ -54,15 +56,13 @@ public class AdUnitServiceImpl implements IAdUnitService {
     }
 
     @Override
-    public AdUnitResponse createUnit(AdUnitRequest request)
-            throws AdException {
+    public AdUnitResponse createUnit(AdUnitRequest request) throws AdException {
 
         if (!request.createValidate()) {
             throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
         }
 
-        Optional<AdPlan> adPlan =
-                planRepository.findById(request.getPlanId());
+        Optional<AdPlan> adPlan = planRepository.findById(request.getPlanId());
         if (!adPlan.isPresent()) {
             throw new AdException(Constants.ErrorMsg.CAN_NOT_FIND_RECORD);
         }
@@ -79,13 +79,11 @@ public class AdUnitServiceImpl implements IAdUnitService {
                         request.getPositionType(), request.getBudget())
         );
 
-        return new AdUnitResponse(newAdUnit.getId(),
-                newAdUnit.getUnitName());
+        return new AdUnitResponse(newAdUnit.getId(), newAdUnit.getUnitName());
     }
 
     @Override
-    public AdUnitKeywordResponse createUnitKeyword(
-            AdUnitKeywordRequest request) throws AdException {
+    public AdUnitKeywordResponse createUnitKeyword(AdUnitKeywordRequest request) throws AdException {
 
         List<Long> unitIds = request.getUnitKeywords().stream()
                 .map(AdUnitKeywordRequest.UnitKeyword::getUnitId)
@@ -111,8 +109,7 @@ public class AdUnitServiceImpl implements IAdUnitService {
     }
 
     @Override
-    public AdUnitItResponse createUnitIt(
-            AdUnitItRequest request) throws AdException {
+    public AdUnitItResponse createUnitIt(AdUnitItRequest request) throws AdException {
 
         List<Long> unitIds = request.getUnitIts().stream()
                 .map(AdUnitItRequest.UnitIt::getUnitId)
@@ -133,8 +130,7 @@ public class AdUnitServiceImpl implements IAdUnitService {
     }
 
     @Override
-    public AdUnitDistrictResponse createUnitDistrict(
-            AdUnitDistrictRequest request) throws AdException {
+    public AdUnitDistrictResponse createUnitDistrict(AdUnitDistrictRequest request) throws AdException {
 
         List<Long> unitIds = request.getUnitDistricts().stream()
                 .map(AdUnitDistrictRequest.UnitDistrict::getUnitId)
@@ -145,8 +141,7 @@ public class AdUnitServiceImpl implements IAdUnitService {
 
         List<AdUnitDistrict> unitDistricts = new ArrayList<>();
         request.getUnitDistricts().forEach(d -> unitDistricts.add(
-                new AdUnitDistrict(d.getUnitId(), d.getProvince(),
-                        d.getCity())
+                new AdUnitDistrict(d.getUnitId(), d.getProvince(), d.getCity())
         ));
         List<Long> ids = unitDistrictRepository.saveAll(unitDistricts)
                 .stream().map(AdUnitDistrict::getId)
@@ -156,8 +151,7 @@ public class AdUnitServiceImpl implements IAdUnitService {
     }
 
     @Override
-    public CreativeUnitResponse createCreativeUnit(
-            CreativeUnitRequest request) throws AdException {
+    public CreativeUnitResponse createCreativeUnit(CreativeUnitRequest request) throws AdException {
 
         List<Long> unitIds = request.getUnitItems().stream()
                 .map(CreativeUnitRequest.CreativeUnitItem::getUnitId)
@@ -189,8 +183,7 @@ public class AdUnitServiceImpl implements IAdUnitService {
             return false;
         }
 
-        return unitRepository.findAllById(unitIds).size() ==
-                new HashSet<>(unitIds).size();
+        return unitRepository.findAllById(unitIds).size() == new HashSet<>(unitIds).size();
     }
 
     private boolean isRelatedCreativeExist(List<Long> creativeIds) {
@@ -199,7 +192,6 @@ public class AdUnitServiceImpl implements IAdUnitService {
             return false;
         }
 
-        return creativeRepository.findAllById(creativeIds).size() ==
-                new HashSet<>(creativeIds).size();
+        return creativeRepository.findAllById(creativeIds).size() == new HashSet<>(creativeIds).size();
     }
 }

@@ -22,9 +22,7 @@ public class CreativeServiceImpl implements ICreativeService {
     @Override
     public CreativeResponse createCreative(CreativeRequest request) {
 
-        Creative creative = creativeRepository.save(
-                request.convertToEntity()
-        );
+        Creative creative = creativeRepository.save(request.convertToEntity());
 
         return new CreativeResponse(creative.getId(), creative.getName());
     }

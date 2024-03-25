@@ -26,34 +26,26 @@ public class AdPlanOPController {
     }
 
     @PostMapping("/create/adPlan")
-    public AdPlanResponse createAdPlan(
-            @RequestBody AdPlanRequest request) throws AdException {
-        log.info("ad-sponsor: createAdPlan -> {}",
-                JSON.toJSONString(request));
+    public AdPlanResponse createAdPlan(@RequestBody AdPlanRequest request) throws AdException {
+        log.info("ad-sponsor: createAdPlan -> {}", JSON.toJSONString(request));
         return adPlanService.createAdPlan(request);
     }
 
     @PostMapping("/get/adPlan")
-    public List<AdPlan> getAdPlanByIds(
-            @RequestBody AdPlanGetRequest request) throws AdException {
-        log.info("ad-sponsor: getAdPlanByIds -> {}",
-                JSON.toJSONString(request));
+    public List<AdPlan> getAdPlanByIds(@RequestBody AdPlanGetRequest request) throws AdException {
+        log.info("ad-sponsor: getAdPlanByIds -> {}", JSON.toJSONString(request));
         return adPlanService.getAdPlanByIds(request);
     }
 
     @PutMapping("/update/adPlan")
-    public AdPlanResponse updateAdPlan(
-            @RequestBody AdPlanRequest request) throws AdException {
-        log.info("ad-sponsor: updateAdPlan -> {}",
-                JSON.toJSONString(request));
+    public AdPlanResponse updateAdPlan(@RequestBody AdPlanRequest request) throws AdException {
+        log.info("ad-sponsor: updateAdPlan -> {}", JSON.toJSONString(request));
         return adPlanService.updateAdPlan(request);
     }
 
     @DeleteMapping("/delete/adPlan")
-    public void deleteAdPlan(
-            @RequestBody AdPlanRequest request) throws AdException {
-        log.info("ad-sponsor: deleteAdPlan -> {}",
-                JSON.toJSONString(request));
+    public void deleteAdPlan(@RequestBody AdPlanRequest request) throws AdException {
+        log.info("ad-sponsor: deleteAdPlan -> {}", JSON.toJSONString(request));
         adPlanService.deleteAdPlan(request);
     }
 }
