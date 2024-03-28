@@ -10,7 +10,7 @@ import cn.hhy.ad.dump.table.AdUnitItTable;
 import cn.hhy.ad.dump.table.AdUnitKeywordTable;
 import cn.hhy.ad.dump.table.AdUnitTable;
 import cn.hhy.ad.handler.AdLevelDataHandler;
-import cn.hhy.ad.mysql.constant.OpType;
+import cn.hhy.ad.constant.OpType;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
 

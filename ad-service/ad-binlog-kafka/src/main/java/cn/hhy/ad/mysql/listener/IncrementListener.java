@@ -1,15 +1,11 @@
 package cn.hhy.ad.mysql.listener;
-/**
- * 将AggregationListener传过来的BinlogRowData转换为MySqlRowData
- * 然后交给相应的sender
- */
 
 import com.github.shyiko.mysql.binlog.event.EventType;
-import cn.hhy.ad.mysql.constant.Constant;
-import cn.hhy.ad.mysql.constant.OpType;
-import cn.hhy.ad.mysql.dto.BinlogRowData;
-import cn.hhy.ad.mysql.dto.MySqlRowData;
-import cn.hhy.ad.mysql.dto.TableTemplate;
+import cn.hhy.ad.constant.Constant;
+import cn.hhy.ad.constant.OpType;
+import cn.hhy.ad.dto.BinlogRowData;
+import cn.hhy.ad.dto.MySqlRowData;
+import cn.hhy.ad.dto.TableTemplate;
 import cn.hhy.ad.sender.ISender;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +22,7 @@ import java.util.Map;
 @Component
 public class IncrementListener implements Ilistener {
 
-    @Resource(name = "kafkaSender")
+    @Resource
     private ISender sender;
 
     private final AggregationListener aggregationListener;

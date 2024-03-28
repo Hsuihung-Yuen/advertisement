@@ -1,4 +1,4 @@
-package cn.hhy.ad.mysql.constant;
+package cn.hhy.ad.constant;
 
 import com.github.shyiko.mysql.binlog.event.EventType;
 

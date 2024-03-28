@@ -1,7 +1,4 @@
-package cn.hhy.ad.mysql.dto;
-/**
- * 表达整个template.json
- */
+package cn.hhy.ad.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,9 +1,6 @@
-package cn.hhy.ad.mysql.dto;
-/**
- * 对原始binlog对象构造成自己所需要的字段
- */
+package cn.hhy.ad.dto;
 
-import cn.hhy.ad.mysql.constant.OpType;
+import cn.hhy.ad.constant.OpType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +8,7 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 
 
 @Data
@@ -24,9 +22,5 @@ public class MySqlRowData {
 
     private OpType opType;
 
-    /**
-     * 字段名 -> 字段值
-     * 这里只关心after的更新值
-     */
     private List<Map<String, String>> fieldValueMap = new ArrayList<>();
 }

@@ -1,7 +1,7 @@
 package cn.hhy.ad.mysql;
 
-import cn.hhy.ad.mysql.listener.AggregationListener;
 import com.github.shyiko.mysql.binlog.BinaryLogClient;
+import cn.hhy.ad.mysql.listener.AggregationListener;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

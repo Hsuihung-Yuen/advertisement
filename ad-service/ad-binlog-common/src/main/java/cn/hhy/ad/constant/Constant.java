@@ -1,4 +1,4 @@
-package cn.hhy.ad.mysql.constant;
+package cn.hhy.ad.constant;
 
 import java.util.HashMap;
 import java.util.Map;

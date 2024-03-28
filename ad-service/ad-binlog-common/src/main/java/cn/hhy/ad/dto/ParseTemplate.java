@@ -1,6 +1,6 @@
-package cn.hhy.ad.mysql.dto;
+package cn.hhy.ad.dto;
 
-import cn.hhy.ad.mysql.constant.OpType;
+import cn.hhy.ad.constant.OpType;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -36,7 +36,8 @@ public class ParseTemplate {
             Map<OpType, List<String>> opTypeFieldSetMap = tableTemplate.getOpTypeFieldSetMap();
 
             for (JsonTable.Column column : table.getInsert()) {
-                getAndCreateIfNeed(OpType.ADD,
+                getAndCreateIfNeed(
+                        OpType.ADD,
                         opTypeFieldSetMap,
                         ArrayList::new
                 ).add(column.getColumn());
@@ -60,7 +61,8 @@ public class ParseTemplate {
         return template;
     }
 
-    private static <T, R> R getAndCreateIfNeed(T key, Map<T, R> map, Supplier<R> factory) {
+    private static <T, R> R getAndCreateIfNeed(T key, Map<T, R> map,
+                                               Supplier<R> factory) {
         return map.computeIfAbsent(key, k -> factory.get());
     }
 }

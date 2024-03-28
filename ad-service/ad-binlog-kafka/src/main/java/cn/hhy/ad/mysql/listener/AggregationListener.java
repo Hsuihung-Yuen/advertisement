@@ -1,33 +1,18 @@
 package cn.hhy.ad.mysql.listener;
-/**
- * 这个主要是对原始binlog数据进行处理，进行数据的聚合
- * 将数据从EventRowData转为BinlogRowData
- * 之后再交给自己定义的listener进行更进一步的处理
- */
+
 import com.github.shyiko.mysql.binlog.BinaryLogClient;
-import com.github.shyiko.mysql.binlog.event.DeleteRowsEventData;
-import com.github.shyiko.mysql.binlog.event.Event;
-import com.github.shyiko.mysql.binlog.event.EventData;
-import com.github.shyiko.mysql.binlog.event.EventType;
-import com.github.shyiko.mysql.binlog.event.TableMapEventData;
-import com.github.shyiko.mysql.binlog.event.UpdateRowsEventData;
-import com.github.shyiko.mysql.binlog.event.WriteRowsEventData;
+import com.github.shyiko.mysql.binlog.event.*;
+import cn.hhy.ad.dto.BinlogRowData;
+import cn.hhy.ad.dto.TableTemplate;
 import cn.hhy.ad.mysql.TemplateHolder;
-import cn.hhy.ad.mysql.dto.BinlogRowData;
-import cn.hhy.ad.mysql.dto.TableTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
-
 
 @Slf4j
 @Component
@@ -49,7 +34,8 @@ public class AggregationListener implements BinaryLogClient.EventListener {
         return dbName + ":" + tableName;
     }
 
-    public void register(String _dbName, String _tableName, Ilistener ilistener) {
+    public void register(String _dbName, String _tableName,
+                         Ilistener ilistener) {
         log.info("register : {}-{}", _dbName, _tableName);
         this.listenerMap.put(genKey(_dbName, _tableName), ilistener);
     }

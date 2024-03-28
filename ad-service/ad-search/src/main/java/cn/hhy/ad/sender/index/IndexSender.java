@@ -4,8 +4,8 @@ import com.alibaba.fastjson.JSON;
 import cn.hhy.ad.dump.table.*;
 import cn.hhy.ad.handler.AdLevelDataHandler;
 import cn.hhy.ad.index.DataLevel;
-import cn.hhy.ad.mysql.constant.Constant;
-import cn.hhy.ad.mysql.dto.MySqlRowData;
+import cn.hhy.ad.constant.Constant;
+import cn.hhy.ad.dto.MySqlRowData;
 import cn.hhy.ad.sender.ISender;
 import cn.hhy.ad.utils.CommonUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,7 @@ import java.util.Map;
 
 
 @Slf4j
-@Component("indexSender")
+@Component
 public class IndexSender implements ISender {
 
     @Override

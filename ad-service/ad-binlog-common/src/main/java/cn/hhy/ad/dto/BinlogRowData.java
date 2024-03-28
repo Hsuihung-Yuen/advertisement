@@ -1,7 +1,4 @@
-package cn.hhy.ad.mysql.dto;
-/**
- * binlog中输出的格式表达
- */
+package cn.hhy.ad.dto;
 
 import com.github.shyiko.mysql.binlog.event.EventType;
 import lombok.Data;

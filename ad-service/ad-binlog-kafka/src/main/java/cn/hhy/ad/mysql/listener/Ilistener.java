@@ -1,6 +1,6 @@
 package cn.hhy.ad.mysql.listener;
 
-import cn.hhy.ad.mysql.dto.BinlogRowData;
+import cn.hhy.ad.dto.BinlogRowData;
 
 
 public interface Ilistener {

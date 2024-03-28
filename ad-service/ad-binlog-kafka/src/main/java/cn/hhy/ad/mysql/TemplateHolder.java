@@ -1,13 +1,10 @@
 package cn.hhy.ad.mysql;
-/**
- * 初始化和填充dto包下的类，为后续监听做准备
- */
 
 import com.alibaba.fastjson.JSON;
-import cn.hhy.ad.mysql.constant.OpType;
-import cn.hhy.ad.mysql.dto.ParseTemplate;
-import cn.hhy.ad.mysql.dto.TableTemplate;
-import cn.hhy.ad.mysql.dto.Template;
+import cn.hhy.ad.constant.OpType;
+import cn.hhy.ad.dto.ParseTemplate;
+import cn.hhy.ad.dto.TableTemplate;
+import cn.hhy.ad.dto.Template;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -28,8 +25,6 @@ public class TemplateHolder {
     private ParseTemplate template;
     private final JdbcTemplate jdbcTemplate;
 
-    //binlog中不返回具体字段名字，只有字段序号
-    //查系统表中所需数据库的库表中字段和序号的关系
     private String SQL_SCHEMA = "select table_schema, table_name, " +
             "column_name, ordinal_position from information_schema.columns " +
             "where table_schema = ? and table_name = ?";
@@ -69,13 +64,20 @@ public class TemplateHolder {
 
     private void loadMeta() {
 
-        for (Map.Entry<String, TableTemplate> entry : template.getTableTemplateMap().entrySet()) {
+        for (Map.Entry<String, TableTemplate> entry :
+                template.getTableTemplateMap().entrySet()) {
 
             TableTemplate table = entry.getValue();
 
-            List<String> updateFields = table.getOpTypeFieldSetMap().get(OpType.UPDATE);
-            List<String> insertFields = table.getOpTypeFieldSetMap().get(OpType.ADD);
-            List<String> deleteFields = table.getOpTypeFieldSetMap().get(OpType.DELETE);
+            List<String> updateFields = table.getOpTypeFieldSetMap().get(
+                    OpType.UPDATE
+            );
+            List<String> insertFields = table.getOpTypeFieldSetMap().get(
+                    OpType.ADD
+            );
+            List<String> deleteFields = table.getOpTypeFieldSetMap().get(
+                    OpType.DELETE
+            );
 
             jdbcTemplate.query(SQL_SCHEMA, new Object[]{
                     template.getDatabase(), table.getTableName()

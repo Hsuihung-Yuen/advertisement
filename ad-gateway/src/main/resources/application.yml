@@ -1,5 +1,5 @@
 server:
-  port: 9000
+  port: 9001
 spring:
   application:
     name: ad-gateway
@@ -9,7 +9,7 @@ eureka:
       defaultZone: http://server1:8000/eureka/
 
 zuul:
-  prefix: /hhyAd
+  prefix: /ad
   routes:
     sponsor:
       path: /ad-sponsor/**

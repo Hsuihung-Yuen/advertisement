@@ -10,13 +10,13 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class PreRequestFilter extends ZuulFilter {
+
     @Override
     public String filterType() {
         return FilterConstants.PRE_TYPE;
     }
 
     @Override
-    //0意味着会在同一类型的其他过滤器之前执行
     public int filterOrder() {
         return 0;
     }
@@ -28,9 +28,11 @@ public class PreRequestFilter extends ZuulFilter {
 
     @Override
     public Object run() throws ZuulException {
+
         RequestContext ctx = RequestContext.getCurrentContext();
         ctx.set("startTime", System.currentTimeMillis());
 
         return null;
     }
 }
+
